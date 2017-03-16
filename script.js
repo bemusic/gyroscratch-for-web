@@ -86,38 +86,22 @@ function createButton (note, bg) {
 }
 
 function appDelegate (runtime) {
-  var lastAlpha = null
-  var value = 0
+  var hp = 1
+  var lastTime = Date.now()
 
-  window.addEventListener('deviceorientation', function (e) {
-    var alpha = e.alpha
-    if (lastAlpha == null) {
-      lastAlpha = alpha
+  window.addEventListener('devicemotion', function (e) {
+    var gamma = e.rotationRate.gamma
+    if (gamma > 10) {
+      runtime.setButton(runtime.ccw)
+      hp = 1
+    } else if (gamma < -10) {
+      runtime.setButton(runtime.cw)
+      hp = 1
+    } else if (Math.abs(gamma) < 3 && hp < 0.9) {
+      runtime.setButton(null)
     }
-    var delta = alpha - lastAlpha
-    for (var i = 0; i < 10; i++) {
-      if (Math.abs(delta - 180) < Math.abs(delta)) delta -= 180
-      else if (Math.abs(delta + 180) < Math.abs(delta)) delta += 180
-      else break
-    }
-    value += delta
-    lastAlpha = alpha
+    var now = Date.now()
+    hp *= Math.exp((now - lastTime) * -1e-3)
+    lastTime = now
   })
-
-  var lastTime = 0
-  setInterval(
-    function () {
-      if (value > 1) {
-        runtime.setButton(runtime.ccw)
-      } else if (value < -1) {
-        runtime.setButton(runtime.cw)
-      } else {
-        runtime.setButton(null)
-      }
-      var now = Date.now()
-      value *= Math.exp((lastTime - now) * 0.01)
-      lastTime = now
-    },
-    1000 / 60
-  )
 }
