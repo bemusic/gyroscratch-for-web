@@ -105,3 +105,11 @@ function appDelegate (runtime) {
     lastTime = now
   })
 }
+
+/* global NoSleep */
+var noSleep = new NoSleep();
+
+function setNoSleep(enabled) {
+  enabled ? noSleep.enable() : noSleep.disable()
+  setStatus('Keep awake ' + (enabled ? 'enabled' : 'disabled'))
+}
