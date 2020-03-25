@@ -1,5 +1,11 @@
 # Gyroscratch for Web
 
+A rhythm-gaming turntable for your ceramic plate.
+
+### &rarr; [View video demo](https://www.youtube.com/watch?v=bTlyNiUXLws)
+
+<br>
+
 |                       |                                                |
 | --------------------- | ---------------------------------------------- |
 | **App URL**           | https://gyroscratch.bemuse.ninja               |
