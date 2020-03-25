@@ -1,7 +1,0 @@
-extends: standard
-parserOptions:
-  ecmaVersion: 5
-  sourceType: script
-rules:
-  eqeqeq: off
-  no-redeclare: off

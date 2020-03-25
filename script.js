@@ -14,8 +14,8 @@ function ok (access) {
   var currentButton = null
   var currentButtonInstance = null
 
-  setStatus('Touch to select MIDI output')
-  document.getElementById('status').onclick = click
+  setStatus('Click a button!')
+  document.getElementById('changeMidi').onclick = click
 
   function getPorts () {
     var outputs = []
@@ -69,13 +69,13 @@ function createButton (note, bg) {
   return {
     press: function (outputPort) {
       var output = outputPort
-      document.body.style.background = bg
+      window.colorOutput.style.background = bg
       if (output) {
         output.send([0x90, note, 127])
       }
       return {
         release: function () {
-          document.body.style.background = 'black'
+          window.colorOutput.style.background = ''
           if (output) {
             output.send([0x80, note, 127])
           }

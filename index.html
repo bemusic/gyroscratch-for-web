@@ -6,12 +6,27 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
 <body style="background:#000">
-  <div style="position:absolute;top:0;right:0;bottom:0;left:0;display:flex;align-items:center;justify-content:center">
+  <script src="NoSleep.js"></script>
+
+  <div id="colorOutput" style="position:absolute;top:0;right:0;bottom:0;left:0;display:flex;align-items:center;justify-content:center">
     <div style="font:8vw Helvetica;color:white;text-align:center;">
       Gyroscratch
       <div style="font-size:60%;margin-top:0.5em;" id="status">Loading</div>
+      <br>
+      <br>
+      <button id="changeMidi">Change MIDI output</button>
+      <br>
+      <label>
+      </label>
+      <button onclick="document.body.webkitRequestFullscreen(); screen.keepAwake = true"></button>
     </div>
   </div>
-  <script src="script.js"></script>
+
+  <script src="script.js?v=1"></script>
+
+  <!-- include the Glitch button to show what the webpage is about and
+        to make it easier for folks to view source and remix -->
+  <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+  <script src="https://button.glitch.me/button.js"></script>
 </body>
 </html>
